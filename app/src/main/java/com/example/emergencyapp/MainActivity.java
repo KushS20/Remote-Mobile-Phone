@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText txt_num,txt_message;
@@ -72,8 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
                  else
                  {
-                     Toast.makeText(this,"You dont hve permission required",Toast.LENGTH_SHORT).show();
+                     Toast.makeText(this,"You don't hve permission required",Toast.LENGTH_SHORT).show();
                  }
         }
     }
-}
+
+
+
+    }
+
+
