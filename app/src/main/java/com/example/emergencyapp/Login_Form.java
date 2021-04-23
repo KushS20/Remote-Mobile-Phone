@@ -56,7 +56,7 @@ public class Login_Form extends AppCompatActivity {
        Register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), Signup_Form.class));
 
             }
         });
