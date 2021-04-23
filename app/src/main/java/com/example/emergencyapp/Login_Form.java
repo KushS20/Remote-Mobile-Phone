@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class Login_Form extends AppCompatActivity {
@@ -26,8 +27,7 @@ public class Login_Form extends AppCompatActivity {
         Password = (EditText) findViewById(R.id.Password1);
         Login = (Button) findViewById((R.id.btnlogin1));
         DB = new DBHelper(this);
-
-
+        Register = (Button)findViewById(R.id.btnregister1);
 
         Login.setOnClickListener(new View.OnClickListener() {
 
@@ -37,24 +37,29 @@ public class Login_Form extends AppCompatActivity {
                 String em = Email.getText().toString();
                 String pass = Password.getText().toString();
 
-                if(em.equals("")||pass.equals(""))
+                if (em.equals("") || pass.equals(""))
                     Toast.makeText(Login_Form.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
+                else {
                     Boolean checkempass = DB.checkusernamepassword(em, pass);
-                    if(checkempass==true){
+                    if (checkempass == true) {
                         Toast.makeText(Login_Form.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
-                    }
-                    else{
+                    } else {
                         Toast.makeText(Login_Form.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
 
                 }
             }
         });
+
+       Register.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+            }
+        });
     }
-    public void btn_signupForm(View view) {
-        startActivity(new Intent(getApplicationContext(), Signup_Form.class));
-    }
+
 }

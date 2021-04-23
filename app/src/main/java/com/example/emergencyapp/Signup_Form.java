@@ -19,6 +19,7 @@ public class Signup_Form extends AppCompatActivity {
     DBHelper DB;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login__form);
@@ -45,7 +46,7 @@ public class Signup_Form extends AppCompatActivity {
                 String full = FullName.getText().toString();
 
 
-                if(user.equals("")||pass.equals("")||repass.equals(""))
+                if(user.equals("")||pass.equals("")||repass.equals("")||em.equals("")||full.equals(""))
                     Toast.makeText(Signup_Form.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else{
                     if(pass.equals(repass)){
@@ -70,6 +71,7 @@ public class Signup_Form extends AppCompatActivity {
                     }
                 }
 
+
             }
 
         });
@@ -77,7 +79,7 @@ public class Signup_Form extends AppCompatActivity {
         Login.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Signup_Form.class);
+                Intent intent = new Intent(getApplicationContext(), Login_Form.class);
                 startActivity(intent);
                 String user = UserName.getText().toString();
                 String pass = Password.getText().toString();
@@ -85,6 +87,7 @@ public class Signup_Form extends AppCompatActivity {
             }
 
         });
+
 
     }
 
