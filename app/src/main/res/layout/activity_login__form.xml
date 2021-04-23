@@ -30,7 +30,7 @@
             android:id="@+id/Email1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Username"
             android:ems="10"
             android:inputType="text"
             android:textSize="22sp"/>
