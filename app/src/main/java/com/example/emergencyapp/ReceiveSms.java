@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
@@ -26,14 +27,20 @@ public class ReceiveSms extends BroadcastReceiver {
                     for (int i = 0; i < msg.length; i++) {
                         msg[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
                         String [] splittedMsg = msg[i].getMessageBody().split("#");
+                        String sourceNumber = msg[i].getOriginatingAddress();
 
                         if (splittedMsg.length > 0 && splittedMsg[0].equals("FIND")) {
                             String number = getContact(context, splittedMsg[1]);
+                            SmsManager smsMgrVar = SmsManager.getDefault();
+                            String responseMsg = null;
+                            if (number != null) {
+                                responseMsg = "Contact number of " + splittedMsg[1] + " is " + number;
+                                smsMgrVar.sendTextMessage(sourceNumber, null, responseMsg, null, null);
+                            } else {
+                                responseMsg = "Contact details of " + splittedMsg[1] + " does not exist. ";
+                                smsMgrVar.sendTextMessage(sourceNumber, null, responseMsg, null, null);
+                            }
 
-                            if (number != null)
-                                Toast.makeText(context, "Number of " + splittedMsg[1] + " is " + number, Toast.LENGTH_SHORT).show();
-                            else
-                                Toast.makeText(context, "Cannot find contact details of " + splittedMsg[1], Toast.LENGTH_SHORT).show();
                         }
                     }
                 } catch (Exception e) {
