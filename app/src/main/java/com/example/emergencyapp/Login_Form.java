@@ -1,8 +1,11 @@
 package com.example.emergencyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +25,13 @@ public class Login_Form extends AppCompatActivity {
         setContentView(R.layout.activity_login__form);
         getSupportActionBar().setTitle("Login Form");
 
+        String [] permissions = {
+                Manifest.permission.RECEIVE_SMS,
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.READ_CONTACTS,
+                Manifest.permission.WRITE_CONTACTS
+        };
+        ActivityCompat.requestPermissions(this, permissions, PackageManager.PERMISSION_GRANTED);
 
         Email = (EditText) findViewById(R.id.Email1);
         Password = (EditText) findViewById(R.id.Password1);

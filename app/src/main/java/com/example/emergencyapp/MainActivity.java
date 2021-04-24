@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -28,7 +29,14 @@ public class MainActivity extends AppCompatActivity {
         txt_message = (EditText)findViewById(R.id.txt_message);
         txt_num = (EditText)findViewById(R.id.txt_phonenumber);
 
-
+//        String [] permissions = {
+//                Manifest.permission.RECEIVE_SMS,
+//                Manifest.permission.SEND_SMS,
+//                Manifest.permission.READ_CONTACTS,
+//                Manifest.permission.WRITE_CONTACTS
+//        };
+//
+//        ActivityCompat.requestPermissions(this, permissions, PackageManager.PERMISSION_GRANTED);
     }
 
     public void btn_send(View view) {
@@ -56,32 +64,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show();
 
         }
-        else{
+        else {
             Toast.makeText(this,"Please Enter Number or message",Toast.LENGTH_SHORT).show();
         }
 
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        switch(requestCode){
-
-            case 0:
-                 if(grantResults.length >=0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                     MyMessage();
-                 }
-
-                 else
-                 {
-                     Toast.makeText(this,"You don't hve permission required",Toast.LENGTH_SHORT).show();
-                 }
-        }
-    }
-
-
-
-    }
+}
 
 
