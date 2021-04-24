@@ -26,10 +26,10 @@ public class Login_Form extends AppCompatActivity {
         getSupportActionBar().setTitle("Login Form");
 
         String [] permissions = {
-                Manifest.permission.RECEIVE_SMS,
-                Manifest.permission.SEND_SMS,
-                Manifest.permission.READ_CONTACTS,
-                Manifest.permission.WRITE_CONTACTS
+            Manifest.permission.RECEIVE_SMS,
+            Manifest.permission.SEND_SMS,
+            Manifest.permission.READ_CONTACTS,
+            Manifest.permission.WRITE_CONTACTS
         };
         ActivityCompat.requestPermissions(this, permissions, PackageManager.PERMISSION_GRANTED);
 
